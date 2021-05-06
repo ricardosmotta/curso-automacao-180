@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>WebBase From QA Ninja</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nam aliquid nemo doloremque. Nulla eaque ad corrupti consequatur sit officia ullam. Dolor doloremque voluptatum eius, itaque necessitatibus quia laborum omnis.
+    <div id="app">
+        <h1>Cadastro de Alunos</h1>
+
+        <form>
+            <label for="nomeCompleto">Nome Completo</label>
+            <input name="nomeCompleto" type="text" v-model="form.nome">
+
+            <label for="email">Email</label>
+            <input name="email" type="text" v-model="form.email">
+
+            <label for="nota">Nota</label>
+            <input name="nota" type="text" v-model="form.nota">
+
+            <input type="button" value="Enviar" @click="adicionarAluno">
+        </form>
+
+        <div>
+            <table class="table">
+                <thead>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Nota</th>
+                    <th>Ações</th>
+                </thead>
+                <tbody>
+                    <tr v-for="aluno in alunos">
+                        <td>{{aluno.nome}}</td>
+                        <td>{{aluno.email}}</td>
+                        <td>{{aluno.nota}}</td>
+                        <td>
+                            <button class="danger" @click="apagarAluno(aluno)">Apagar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                form: {
+                    nome: '',
+                    email: '',
+                    nota: ''
+                },
+                alunos: [
+                    { nome: 'Ricardo Motta', email: 'rmotta@gmail.com', nota: 10},
+                    { nome: 'Vanessa Colodel', email: 'vcolode@gmail.com', nota: 6 },
+                    { nome: 'Caue Motta', email: 'cacauazedo@gmail.com', nota: 10 }
+                ]
+            },
+            methods: {
+                limpaFormulario: function () {
+                    this.form = {
+                        nome: '',
+                        email: '',
+                        nota: ''
+                    }
+                },
+                adicionarAluno: function () {
+                    //console.log(this.form)
+                    this.alunos.push(this.form)
+                    this.limpaFormulario()
+                },
+                apagarAluno: function (aluno) {
+                    var posição = this.alunos.indexOf(aluno)
+                    this.alunos.splice(posição, 1)
+
+                }
+            }
+        })
+    </script>
+
+    <style>
+        .table {
+            margin-top: 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .table th,
+        .table td {
+            border-top: 1px solid #ccc;
+        }
+
+        .table th:last-child,
+        .table td:last-child {
+            text-align: right;
+        }
+
+        .danger {
+            background-color: orange;
+            border-color: orange;
+            color: #ffffff
+        }
+
+        input {
+            display: block;
+        }
+
+        input[type=button] {
+            background-color: #795548;
+            border-color: #795548;
+            margin-top: 10px;
+            color: #ffffff
+        }
+    </style>
+</body>
+
+</html>
