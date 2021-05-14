@@ -3,9 +3,15 @@ Dado('que acesso a página de cadastro') do
 end
 
 Quando('submeto meus dados') do
-    pending # Write code here that turns the phrase above into concrete actions
+    find("#fullName").set "Ricardo Motta"
+    find("#email").set "teste@google.com"
+    find("#password").set "teste"
+
+    sleep 5 # temporário 
+
+    click_button "Cadastrar"
 end
 
 Então('sou redirecionado para o dashboard') do
-    pending # Write code here that turns the phrase above into concrete actions
+    expect(page).to have_css ".dashboard"
 end
