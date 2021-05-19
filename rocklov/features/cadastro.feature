@@ -10,7 +10,9 @@ Funcionalidade: Cadastro
     Cenario: Efetuar cadastro
 
         Dado que acesso a página de cadastro
-        Quando submeto meus dados
+        Quando submeto o seguinte formulário de cadastro: 
+            |nome         |email            |senha|
+            |Ricardo Motta|rmotta@google.com|teste|
         Então sou redirecionado para o dashboard
 
     @tentativa_cadastro
@@ -18,28 +20,28 @@ Funcionalidade: Cadastro
 
         Dado que acesso a página de cadastro
         Quando submeto meus dados SEM o nome
-        Então vejo a mensagem de alerta: Oops. Informe seu nome completo!
+        Então vejo a mensagem de alerta: "Oops. Informe seu nome completo!"
 
     @tentativa_cadastro
     Cenario: Submeter cadastro SEM o e-mail
 
         Dado que acesso a página de cadastro
         Quando submeto meus dados SEM o e-mail
-        Então vejo a mensagem de alerta: Oops. Informe um e-mail válido!
+        Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
-     @tentativa_cadastro
+    @tentativa_cadastro
     Cenario: Submeter cadastro com e-mail inválido
 
         Dado que acesso a página de cadastro
         Quando submeto meus dados com e-mail incorreto
-        Então vejo a mensagem de alerta: Oops. Informe um e-mail válido!
+        Então vejo a mensagem de alerta: "Oops. Informe um email válido!"
 
     @tentativa_cadastro
     Cenario: Submeter cadastro SEM a senha
 
         Dado que acesso a página de cadastro
         Quando submeto meus dados SEM a senha
-        Então vejo a mensagem de alerta: Oops. Informe sua senha secreta!
+        Então vejo a mensagem de alerta: "Oops. Informe sua senha secreta!"
 
     @tentativa_cadastro
     Cenario: Email ja cadastrado
