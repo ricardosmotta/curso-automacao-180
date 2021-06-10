@@ -31,7 +31,7 @@ Quando('submeto o cadastro desse item') do
 
     click_button "Cadastrar"
 
-    sleep 5 #temporário
+    sleep 5 # temporário
 end
 
 Então('devo ver esse item no meu Dashboard') do
