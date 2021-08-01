@@ -17,7 +17,7 @@ Quando('submeto o meu cadastro completo') do
 end
 
 Então('sou redirecionado para tela de sucesso') do
-    expect(page).to have_css ".row"
+    row-bg-wrap instance-1
 
     sleep 5 #temporário
 end
